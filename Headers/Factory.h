@@ -10,7 +10,7 @@ protected:
 	LevelManager* lm;
 public:
 	virtual ~IFactory() {};
-	virtual Component* createInstance(tinyxml2::XMLElement*) = 0;
+	virtual Component* createInstance(const tinyxml2::XMLElement&) = 0;
 };
 
 typedef std::unordered_map<std::string, IFactory*> ComponentFactoryList;
@@ -18,38 +18,38 @@ typedef std::unordered_map<std::string, IFactory*> ComponentFactoryList;
 class HealthFactory : public IFactory {
 public:
 	HealthFactory(LevelManager* levelmanager) { lm = levelmanager; };
-	Health* createInstance(tinyxml2::XMLElement*);
+	Health* createInstance(const tinyxml2::XMLElement&);
 };
 
 class PositionFactory : public IFactory {
 public:
-	Position* createInstance(tinyxml2::XMLElement*);
+	Position* createInstance(const tinyxml2::XMLElement&);
 };
 
 class SpriteFactory : public IFactory {
 public:
-	Sprite* createInstance(tinyxml2::XMLElement*);
+	Sprite* createInstance(const tinyxml2::XMLElement&);
 };
 
 class RendererFactory : public IFactory {
 public:
 	RendererFactory(LevelManager* levelmanager) { lm = levelmanager; };
-	Renderer* createInstance(tinyxml2::XMLElement*);
+	Renderer* createInstance(const tinyxml2::XMLElement&);
 };
 
 class KeyboardControlFactory : public IFactory {
 public:
 	KeyboardControlFactory(LevelManager* levelmanager) { lm = levelmanager; };
-	KeyboardControl* createInstance(tinyxml2::XMLElement*);
+	KeyboardControl* createInstance(const tinyxml2::XMLElement&);
 };
 
 class VelocityFactory : public IFactory {
 public:
-	Velocity* createInstance(tinyxml2::XMLElement*);
+	Velocity* createInstance(const tinyxml2::XMLElement&);
 };
 
 class CollisionFactory : public IFactory {
 public:
 	CollisionFactory(LevelManager* levelmanager) { lm = levelmanager; };
-	Collision* createInstance(tinyxml2::XMLElement*);
+	Collision* createInstance(const tinyxml2::XMLElement&);
 };
